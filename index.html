@@ -390,10 +390,14 @@
       </li>
       <li style="display:flex; align-items:center; gap:0.75rem;">
         <span style="font-size:0.75rem; color:var(--text-muted); min-width:1rem;">02</span>
-        <a href="#cv-screener" style="font-size:0.9rem; color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--border);">CV Screener</a>
+        <a href="#news-summary" style="font-size:0.9rem; color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--border);">Daily News Aggregator</a>
       </li>
       <li style="display:flex; align-items:center; gap:0.75rem;">
         <span style="font-size:0.75rem; color:var(--text-muted); min-width:1rem;">03</span>
+        <a href="#cv-screener" style="font-size:0.9rem; color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--border);">CV Screener &mdash; Weighted Skills Scoring</a>
+      </li>
+      <li style="display:flex; align-items:center; gap:0.75rem;">
+        <span style="font-size:0.75rem; color:var(--text-muted); min-width:1rem;">04</span>
         <a href="#ops-agent" style="font-size:0.9rem; color:var(--text-primary); text-decoration:none; border-bottom:1px solid var(--border);">AI Operations Agent &mdash; Project Tracking Tool</a>
       </li>
     </ol>
@@ -483,7 +487,94 @@
     </div>
   </article>
 
-    <!-- Tool 2: CV Screener -->
+    <!-- Tool 2: Daily News Summary -->
+  <article class="tool-card" id="news-summary">
+    <div class="tool-header">
+      <div class="tool-icon">📰</div>
+      <div class="tool-meta">
+        <span class="tool-tag">Finance &middot; Automation</span>
+        <h2>Daily News Aggregator</h2>
+        <p>Aggregates 20+ daily news emails from a dedicated inbox, compiles the most important stories ranked by frequency of coverage across sources, and delivers a structured morning briefing automatically.</p>
+      </div>
+    </div>
+    <div class="tool-body">
+      <div class="how-it-works">
+        <p class="section-label">How it works</p>
+        <div class="steps">
+          <div class="step"><div class="step-num">1</div><span>A dedicated inbox receives 20+ news emails per day from multiple financial and market sources</span></div>
+          <div class="step"><div class="step-num">2</div><span>Claude reads and aggregates all incoming emails, extracting the key stories from each</span></div>
+          <div class="step"><div class="step-num">3</div><span>Stories are ranked by importance, with the most widely covered leading</span></div>
+          <div class="step"><div class="step-num">4</div><span>A structured briefing email is compiled and sent automatically each morning</span></div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Tools used and why</p>
+        <div class="output-preview">
+          <table style="width:100%; border-collapse:collapse; font-size:0.85rem;">
+            <thead>
+              <tr>
+                <th style="text-align:left; font-weight:500; color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; padding:0.4rem 1rem 0.5rem 0; border-bottom:1px solid var(--border); width:30%;">Tool</th>
+                <th style="text-align:left; font-weight:500; color:var(--text-muted); font-size:0.75rem; text-transform:uppercase; letter-spacing:0.06em; padding:0.4rem 0 0.5rem; border-bottom:1px solid var(--border);">Rationale</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td style="padding:0.55rem 1rem 0.55rem 0; color:var(--text-primary); font-weight:500; border-bottom:1px solid var(--border); vertical-align:top;">Claude (Anthropic)</td>
+                <td style="padding:0.55rem 0 0.55rem; color:var(--text-secondary); border-bottom:1px solid var(--border);">Reads and synthesises all incoming emails, identifies the most covered stories, and writes the structured briefing in a consistent format.</td>
+              </tr>
+              <tr>
+                <td style="padding:0.55rem 1rem 0.55rem 0; color:var(--text-primary); font-weight:500; border-bottom:1px solid var(--border); vertical-align:top;">Claude Scheduled Tasks</td>
+                <td style="padding:0.55rem 0 0.55rem; color:var(--text-secondary); border-bottom:1px solid var(--border);">Runs the workflow automatically each morning without any manual trigger &mdash; no server or cron job required.</td>
+              </tr>
+              <tr>
+                <td style="padding:0.55rem 1rem 0.55rem 0; color:var(--text-primary); font-weight:500; border-bottom:1px solid var(--border); vertical-align:top;">Gmail</td>
+                <td style="padding:0.55rem 0 0.55rem; color:var(--text-secondary); border-bottom:1px solid var(--border);">Dedicated inbox acts as the aggregation point for all incoming news sources; Claude reads directly from it via API integration.</td>
+              </tr>
+              <tr>
+                <td style="padding:0.55rem 1rem 0.55rem 0; color:var(--text-primary); font-weight:500; vertical-align:top;">Python</td>
+                <td style="padding:0.55rem 0 0.55rem; color:var(--text-secondary);">Handles email retrieval, processing logic, and output formatting.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Sample output <span style="font-weight:400; text-transform:none; letter-spacing:0; color:var(--text-muted); font-size:0.75rem;">(condensed &mdash; each section contains more stories in the full email)</span></p>
+        <div class="output-preview">
+          <div style="margin-bottom:1.25rem;">
+            <p style="font-size:0.75rem; font-weight:500; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Section 1 &mdash; Top Market Drivers</p>
+            <p style="font-size:0.85rem; color:var(--text-primary); font-weight:500; margin-bottom:0.2rem;">UK political crisis drives gilt sell-off</p>
+            <p style="font-size:0.8rem; color:var(--text-secondary);">The 30-year gilt yield hit its highest level this century as cabinet allies privately urged PM Starmer to set a departure timetable. Schroders said it is avoiding UK bonds entirely.</p>
+          </div>
+          <div style="border-top:1px solid var(--border); padding-top:1.25rem; margin-bottom:1.25rem;">
+            <p style="font-size:0.75rem; font-weight:500; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Section 2 &mdash; Key Data Releases Today</p>
+            <p style="font-size:0.85rem; color:var(--text-primary); font-weight:500; margin-bottom:0.2rem;">1:30pm BST &mdash; US CPI Inflation (April)</p>
+            <p style="font-size:0.8rem; color:var(--text-secondary);">Headline: <strong>+0.5% MoM / +3.6% YoY</strong> (prior: +0.9% MoM / +3.3% YoY) &middot; Core CPI: <strong>+0.2% MoM / +2.6% YoY</strong> &middot; Markets to watch: USD crosses, Treasuries, equities</p>
+          </div>
+          <div style="border-top:1px solid var(--border); padding-top:1.25rem; margin-bottom:1.25rem;">
+            <p style="font-size:0.75rem; font-weight:500; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Section 3 &mdash; Top Stories</p>
+            <p style="font-size:0.85rem; color:var(--text-primary); font-weight:500; margin-bottom:0.2rem;">1. Keir Starmer Leadership Crisis &amp; UK Gilt Sell-off &mdash; 5 outlets</p>
+          </div>
+          <div style="border-top:1px solid var(--border); padding-top:1.25rem;">
+            <p style="font-size:0.75rem; font-weight:500; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:0.4rem;">Section 4 &mdash; Full Stories by Source</p>
+            <p style="font-size:0.85rem; color:var(--text-primary); font-weight:500; margin-bottom:0.2rem;">FT Unhedged (Katie Martin) &mdash; "The Trump Trade 2.0"</p>
+            <p style="font-size:0.8rem; color:var(--text-secondary);">Received 05:30 BST &middot; Full article below</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <p class="section-label">Built with</p>
+        <div class="tech-pills">
+          <span class="tech-pill">Claude (Anthropic)</span>
+          <span class="tech-pill">Claude Scheduled Tasks</span>
+          <span class="tech-pill">Gmail</span>
+          <span class="tech-pill">Python</span>
+        </div>
+      </div>
+    </div>
+  </article>
+
+    <!-- Tool 3: CV Screener -->
   <article class="tool-card" id="cv-screener">
     <div class="tool-header">
       <div class="tool-icon">📄</div>
@@ -548,7 +639,7 @@
     </div>
   </article>
 
-  <!-- Tool 3: AI Operations Agent -->
+  <!-- Tool 4: AI Operations Agent -->
   <article class="tool-card" id="ops-agent">
     <div class="tool-header">
       <div class="tool-icon">🤖</div>
